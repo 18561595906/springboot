@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.dao.BigDataFirstDistrictsMapper">
+
+
+ <select id="selectMaxNum"  resultType="java.lang.Integer">
+        select MAX(t.deimension_id) from big_data_first_districts t
+    </select>
+    <select id="selectByModel"  parameterType="com.example.demo.entity.BigDataFirstDistricts"    resultType="com.example.demo.entity.BigDataFirstDistricts">
+        select * from big_data_first_districts u
+        <where>
+            <if test="id != null and id != ''">
+                AND u.ID = #{id}
+            </if>
+            <if test="createBy != null  and createBy != ''">
+                and u.create_by = #{createBy}
+            </if>
+            <if test="createTime != null ">
+                and u.create_time = #{createTime}
+            </if>
+            <if test="updateBy != null  and updateBy != ''">
+                and u.update_by = #{updateBy}
+            </if>
+            <if test="updateTime != null  and updateTime != ''">
+                and u.update_time = #{updateTime}
+            </if>
+            <if test="deimensionId != null ">
+                and u.deimension_id = #{deimensionId}
+            </if>
+            <if test="deimension != null  and deimension != ''">
+                and u.deimension = #{deimension}
+            </if>
+            <if test="flag != null  and flag != ''">
+                and u.flag = #{flag}
+            </if>
+        </where>
+    </select>
+
+</mapper>
